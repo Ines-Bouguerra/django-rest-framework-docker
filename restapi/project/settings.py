@@ -1,6 +1,7 @@
 """Common settings and globals."""
 
 
+
 from datetime import timedelta
 import os
 from os.path import abspath, basename, dirname, join, normpath
@@ -27,7 +28,7 @@ path.append(DJANGO_ROOT)
 
 ########## DEBUG CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#debug
-DEBUG = True if os.getenv('DEBUG') == 'true' else False
+DEBUG = os.getenv('DEBUG') == 'true'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-debug
 TEMPLATE_DEBUG = DEBUG
@@ -175,7 +176,7 @@ MIDDLEWARE = (
 
 ########## URL CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#root-urlconf
-ROOT_URLCONF = '%s.urls' % SITE_NAME
+ROOT_URLCONF = f'{SITE_NAME}.urls'
 ########## END URL CONFIGURATION
 
 
@@ -198,10 +199,10 @@ DJANGO_APPS = (
 )
 
 THIRD_PARTY_APPS = (
-    
+
     # REST
     'rest_framework',
-    
+
     # Auth
     'oauth2_provider',
 
